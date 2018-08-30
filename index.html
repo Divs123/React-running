@@ -1,12 +1,71 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello React</title>
-  </head>
-  <body>
-    <div id="hello"></div>
-    <div id="world"></div>
-    <script src="bundle.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Hello React</title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js">
+  </script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js">
+  </script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+  <!-- <div id="hello"></div>  -->
+  <!-- <div id="world"></div>  -->
+  <!-- <script src="bundle.js"></script> -->
+  <div id="root"></div>
+  <script type="text/babel">
+    /*********Property and event handling *******/
+    // class Movie extends React.Component { 
+    //   editThis(){
+    //     alert("This is Edited");
+    //   }
+    //   deleteThis(){
+    //     console.log("deleteedd");
+    //     alert("This is Deleted");
+    //   }
+    //   render() { 
+    //     return  <div>
+    //               <h1>{this.props.name}</h1>
+    //               <h1>{this.props.genre}</h1>
+    //               <button onClick={this.editThis}>Edit</button>
+    //               <button onClick={this.deleteThis}>Delete</button>
+    //             </div>
+    // } } 
+    // ReactDOM.render(<div><Movie name="Shhh1" genre="kuchbhi1"/>
+    // <Movie name="Shhh2" genre="kuchbhi2"/>
+    // <Movie name="Shhh3" genre="kuchbhi3"/></div>, document.getElementById('root'));
+
+      class Checked extends React.Component{
+        constructor(props) {
+            super(props);
+            this.state = {checked: true };
+          }
+        // getInitialState(){
+        //   return { checked: true }
+        // }
+        changeState(){
+          this.setState({checked:!this.state.checked});
+        }
+
+        render(){
+          var msg='';
+          if(this.state.checked){
+            msg="checked";
+          }else{
+            msg="unchecked";
+          }
+          return(<div>
+              <input type="checkbox" onChange={this.changeState} defaultChecked={this.state.checked}/>
+              <div>Message is {msg}</div>
+            </div>
+          )
+        }
+      }  
+      ReactDOM.render(<Checked/>, document.getElementById('root'));
+
+  </script>
+</body>
 </html>
